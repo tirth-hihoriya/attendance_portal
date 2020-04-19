@@ -1,0 +1,34 @@
+{% extends 'portal/base.html' %}
+
+{% block body %}
+
+{% if messages %}
+    {% for message in messages %}
+        <div>
+            <strong>
+                {{message|safe}}
+            </strong>
+        </div>
+    {% endfor %}
+{% else %}
+
+    <form method="post" enctype="multipart/form-data">
+    
+        {% csrf_token %}
+        <label><h1>Upload a CSV file</h1></label><hr>
+
+        <input type="file" name="file" class="btn btn-primary">
+        
+        <p>Note: It will accept CSV file only</p>
+        <br>
+
+        <div class="btn btn-success">
+            <button type="submit" >Upload</button>
+        </div>
+
+    </form>
+
+{% endif %}
+
+
+{% endblock %}

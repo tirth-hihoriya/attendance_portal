@@ -1,0 +1,68 @@
+{% extends 'portal/base.html' %}
+
+{% block body %}
+
+<br><br>
+
+<!-- <form action="" method="GET">
+               
+                 
+    {{myFilter.form}}
+    <input type="submit" class="btn btn-secondary"  value="Filter" >
+  </form>
+  <br><br> -->
+
+
+
+<h1> Attendance Sheet  </h1>
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Roll no. </th>
+        <th>Working Days</th>
+        <th>Present Days</th>
+        <th>Percentage</th>
+    
+      </tr>
+    </thead>
+
+    <tbody>
+
+      {% for row in rows %}
+
+      {% if row.lessthan_65 %}
+      <tr class="table-danger">
+        <td>{{ row.rollno }}
+        <td>{{ row.working_days }}</td>
+        <td>{{ row.present_days }} </td>
+        <td>{{ row.percentage }}</td>
+      </tr>
+
+      {% elif row.lessthan_85  %}
+      <tr class="table-warning">
+        <td>{{ row.rollno }}
+        <td>{{ row.working_days }}</td>
+        <td>{{ row.present_days }} </td>
+        <td>{{ row.percentage }}</td>
+      </tr>
+
+      {% else %}
+      <tr>
+        <td>{{ row.rollno }}
+        <td>{{ row.working_days }}</td>
+        <td>{{ row.present_days }} </td>
+        <td>{{ row.percentage }}</td>
+      </tr>
+
+
+      {% endif %}
+
+
+
+
+      {% endfor %}
+    </tbody>
+  </table>
+
+  {% endblock %}
