@@ -11,19 +11,24 @@
         </div>
     {% endfor %}
 {% else %}
-
+<br><br><br>
     <form method="post" enctype="multipart/form-data">
     
         {% csrf_token %}
         <label><h1>Upload a CSV file</h1></label><hr>
 
         <input type="file" name="file" class="btn btn-primary">
-        
+
         <p>Note: It will accept CSV file only</p>
         <br>
 
         <div class="btn btn-success">
-            <button type="submit" >Upload</button>
+            <button  type="submit" > Upload</button>
+        </div>
+        <br>
+        <br>
+        <div class="btn btn-dark">
+            <button  type="submit" > <a href="{% url 'portal-home' %}">Home</a></button>
         </div>
 
     </form>

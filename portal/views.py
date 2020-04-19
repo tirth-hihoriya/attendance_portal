@@ -38,6 +38,7 @@ def csv_upload(request):
             lt65 = True
         elif percent<85:
             lt85 = True
+            
         else:
             lt65 = False
             lt85 = False
@@ -59,14 +60,22 @@ def csv_upload(request):
 
 
 def home(request):
-    template= 'portal/home.html'
     rows = Result.objects.all()
+    query = request.GET.get('q')
+   
+    if query:
+        rows = Result.objects.filter(rollno__icontains=query)
+
+
+
+    template= 'portal/home.html'
+    
 
     myFilter = ResultFilter(request.GET, queryset=rows)
     rows = myFilter.qs
 
     context = {
-        'rows': rp,
+        'rows': rows,
         'myFilter':myFilter,
        
     }

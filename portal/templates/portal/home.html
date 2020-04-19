@@ -32,16 +32,16 @@
 
       {% for row in rows %}
 
-      {% if row.lessthan_65 %}
-      <tr class="table-danger">
+      {% if row.lessthan_85 %}
+      <tr class="table-warning">
         <td>{{ row.rollno }}
         <td>{{ row.working_days }}</td>
         <td>{{ row.present_days }} </td>
         <td>{{ row.percentage }}</td>
       </tr>
 
-      {% elif row.lessthan_85  %}
-      <tr class="table-warning">
+      {% elif row.lessthan_65  %}
+      <tr class="table-danger">
         <td>{{ row.rollno }}
         <td>{{ row.working_days }}</td>
         <td>{{ row.present_days }} </td>
