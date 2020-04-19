@@ -33,7 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'portal',
     'django.contrib.admin',
-    # 'django_filters',
+    'django_filters',
     # 'crispy_forms',
     'django.contrib.auth',
     'django.contrib.contenttypes',

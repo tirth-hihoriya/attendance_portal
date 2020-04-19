@@ -3,7 +3,7 @@ import csv, io
 from django.contrib import messages
 import decimal
 from .models import *
-
+from .filters import *
 
 
 def csv_upload(request):
@@ -30,7 +30,7 @@ def csv_upload(request):
         rollno1 = row[0]
         present = row.count('p')
         percent = present/total_days*100
-        print(rollno1 + "    " + str(total_days) + "      " + str(present) + "      " + str(percent) + "%")
+        # print(rollno1 + "    " + str(total_days) + "      " + str(present) + "      " + str(percent) + "%")
         
         lt65 = False
         lt85 = False
@@ -61,8 +61,13 @@ def csv_upload(request):
 def home(request):
     template= 'portal/home.html'
     rows = Result.objects.all()
+
+    myFilter = ResultFilter(request.GET, queryset=rows)
+    rows = myFilter.qs
+
     context = {
-        'rows': rows,
+        'rows': rp,
+        'myFilter':myFilter,
        
     }
     return render(request, template, context)
