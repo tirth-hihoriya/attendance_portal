@@ -1,4 +1,3 @@
-# Practical - 10 (PSC)
 -----
 # Attendance_portal using Django
 
